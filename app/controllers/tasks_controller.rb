@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :redirect_to_login
   before_action :set_task, only: %i[ show edit update destroy ]
   before_action :set_category, only: %i[ show edit new update create destroy index]
   # GET /tasks or /tasks.json
@@ -72,4 +73,9 @@ class TasksController < ApplicationController
       params.require(:task).permit(:title, :notes, :date, :completed, :category_id)
     end
 
+    def redirect_to_login
+      if !current_user
+        redirect_to new_user_session_url
+      end
+    end
   end

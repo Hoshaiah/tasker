@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :redirect_to_login
   before_action :set_category, only: %i[ show edit update destroy ]
 
   # GET /categories or /categories.json
@@ -67,5 +68,11 @@ class CategoriesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def category_params
       params.require(:category).permit(:title, :notes, :date, :completed)
+    end
+
+    def redirect_to_login
+      if !current_user
+        redirect_to new_user_session_url
+      end
     end
 end
