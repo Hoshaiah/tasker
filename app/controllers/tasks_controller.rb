@@ -30,7 +30,7 @@ class TasksController < ApplicationController
         # format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+        # format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
   end
