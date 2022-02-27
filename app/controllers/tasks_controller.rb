@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  include ActionView::Helpers::UrlHelper
   before_action :redirect_to_login
   before_action :set_task, only: %i[ show edit update destroy ]
   before_action :set_category, only: %i[ show edit new update create destroy index]
@@ -45,8 +46,13 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to category_tasks_url(params[:category_id]), notice: "Task was successfully updated." }
+        @root ||= params[:root]
+        if @root
+          format.html { redirect_to due_today_url, notice: "Task was successfully updated." }
+        else
+          format.html { redirect_to category_tasks_url(params[:category_id]), notice: "Task was successfully updated." }
         # format.json { render :show, status: :ok, location: @task }
+        end
       else
         format.html { render :edit, status: :unprocessable_entity }
         # format.json { render json: @task.errors, status: :unprocessable_entity }
