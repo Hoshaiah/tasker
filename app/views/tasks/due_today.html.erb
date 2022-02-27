@@ -1,13 +1,13 @@
 
-<div> 
-    <h1 class="text-xl font-bold">Today</h1>
-    <% @tasks_today.each do |task| %>
-        <%= form_with url: category_task_path(task.category_id, task.id), method: 'put' do |f| %>
-            <%= check_box("task", :completed, options = {checked: task.completed, onchange: "this.form.submit()", id: "task_#{task.id}"}) %>
-            <%= task.title %>
-            <%= task.completed %>
-            <%= hidden_field_tag :root, true %>
+<div class="w-full h-full"> 
+    <h1 class="text-xl font-bold m-4">Today</h1>
+    <div class="flex flex-col w-full h-full">
+        <% @tasks_today.each do |task| %>
+            <%= form_with url: category_task_path(task.category_id, task.id), method: 'put', class: 'flex mt-7 ml-10' do |f| %>
+                    <%= check_box("task", :completed, options = {checked: task.completed, onchange: "this.form.submit()", id: "task_#{task.id}"}) %>
+                    <label class="<%= task.completed? ? 'line-through' : '' %> text-md pl-4"><%= task.title %></label>
+                    <%= hidden_field_tag :root, true %>
+            <% end %>
         <% end %>
-    <% end %>
-
+    </div>
 </div>
