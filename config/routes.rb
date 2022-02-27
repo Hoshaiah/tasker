@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "application#index"
+  root to: "tasks#due_today", as: 'due_today'
   resources :categories do
     resources :tasks
   end

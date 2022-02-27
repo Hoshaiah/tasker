@@ -3,6 +3,12 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
   before_action :set_category, only: %i[ show edit new update create destroy index]
   # GET /tasks or /tasks.json
+  def due_today
+    @tasks_today = current_user.tasks.where(date: Date.today.all_day)
+    @categories = current_user.categories
+    # @tasks_today = current_user.tasks.where('date BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day)
+  end
+
   def index
     @tasks = Task.where category_id:@category.id
   end
