@@ -11,12 +11,51 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
+  <div class="field mt-8 ml-12">
+    <%= form.label "Title", class: "font-bold"  %>
     <%= form.text_field :title %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <p class="font-bold mt-8 ml-12""> Color </p>
+  <div class="flex w-5/6 max-w-xl flex flex-wrap ml-12"">
+    <div class="black rounded-md m-1">
+      <%= form.label :color, '__', :value => 'black', :class => "w-12 h-12 absolute text-center z-10 text-inherit" %>
+      <%= form.radio_button :color,'black' %> 
+      <div class="black rounded-md w-12 h-12"> </div>
+    </div>
+    <div class="purple rounded-md m-1">
+      <%= form.label :color, '__', :value => 'purple', :class => "w-12 h-12 absolute text-center z-10 text-inherit" %>
+      <%= form.radio_button :color,'purple' %> 
+      <div class="purple rounded-md w-12 h-12"> </div>
+    </div>
+    <div class="orange rounded-md m-1">
+      <%= form.label :color, '__', :value => 'orange', :class => "w-12 h-12 absolute text-center z-10 text-inherit" %>
+      <%= form.radio_button :color,'orange' %> 
+      <div class="orange rounded-md w-12 h-12"> </div>
+    </div>
+    <div class="blue rounded-md m-1">
+      <%= form.label :color, '__', :value => 'blue', :class => "w-12 h-12 absolute text-center z-10 text-inherit" %>
+      <%= form.radio_button :color,'blue' %> 
+      <div class="blue rounded-md w-12 h-12"> </div>
+    </div>
+    <div class="green rounded-md m-1">
+      <%= form.label :color, '__', :value => 'green', :class => "w-12 h-12 absolute text-center z-10 text-inherit" %>
+      <%= form.radio_button :color,'green' %> 
+      <div class="green rounded-md w-12 h-12"> </div>
+    </div>
+    <div class="red rounded-md m-1">
+      <%= form.label :color, '__', :value => 'red', :class => "w-12 h-12 absolute text-center z-10 text-inherit" %>
+      <%= form.radio_button :color,'red' %> 
+      <div class="red rounded-md w-12 h-12"> </div>
+    </div>
+    <div class="yellow rounded-md m-1">
+      <%= form.label :color, '__', :value => 'yellow', :class => "w-12 h-12 absolute text-center z-10 text-inherit" %>
+      <%= form.radio_button :color,'yellow' %> 
+      <div class="yellow rounded-md w-12 h-12"> </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center items-center text-white font-bold mt-4 ml-12 bg-blue-400 hover:bg-blue-200 hover:text-black p-4 rounded-md w-36 h-12 ">
+    <%= form.submit :class => 'font-bold' %>
   </div>
 <% end %>

@@ -69,3 +69,120 @@ div.actions {
 
 label {
   display: block; }
+
+
+input[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+input[type=radio] + div {
+  cursor: pointer;
+}
+
+input[type=radio]:checked + div {
+  // outline: 2px solid #f00;
+  border: 4px solid rgb(139, 137, 137);
+}
+
+div.black {
+  background-color: #000000 ;
+  color: #000000;
+}
+div.category-black {
+  border-color:#000000
+}
+input.black {
+  border-color:#000000
+}
+input[type="checkbox"].black:checked {
+  color: #000000;
+}
+
+div.blue {
+  background-color: #63baec ;
+  color: #63baec;
+}
+div.category-blue {
+  border-color:#63baec
+}
+input.blue {
+  border-color:#63baec
+}
+input[type="checkbox"].blue:checked {
+  color: #63baec;
+}
+
+
+div.purple {
+  background-color:#607afc ;
+  color: #607afc;
+}
+div.category-purple {
+  border-color:#607afc;
+}
+input.purple {
+  border-color:#607afc
+}
+input[type="checkbox"].purple:checked {
+  color: #607afc;
+}
+
+
+div.orange {
+  background-color: #fda900 ;
+  color: #fda900;
+}
+div.category-orange {
+  border-color:#fda900
+}
+input.orange {
+  border-color:#fda900
+}
+input[type="checkbox"].orange:checked {
+  color: #fda900;
+}
+
+div.green {
+  background-color: #94f5a1 ;
+  color: #94f5a1;
+}
+div.category-green {
+  border-color:#94f5a1
+}
+input.green {
+  border-color:#94f5a1
+}
+input[type="checkbox"].green:checked {
+  color: #94f5a1;
+}
+
+div.red {
+  background-color: #f38282 ;
+  color: #f38282;
+}
+div.category-red {
+  border-color:#f38282
+}
+input.red {
+  border-color:#f38282
+}
+input[type="checkbox"].red:checked {
+  color: #f38282;
+}
+
+div.yellow {
+  background-color: #ffe056 ;
+  color: #ffe056;
+}
+div.category-yellow {
+  border-color:#ffe056
+}
+input.yellow {
+  border-color:#ffe056
+}
+input[type="checkbox"].yellow:checked {
+  color: #ffe056;
+}

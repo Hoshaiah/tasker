@@ -31,6 +31,14 @@
     <%= form.check_box :completed %>
   </div>
 
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.text_field :category_id%>
+  </div>
+
+  <div class="field">
+    <%= form.select :category_id, current_user.categories.pluck(:title,:id), selected: "#{@task.category ? @task.category.id : @current_user.categories.first.title}" %>
+  </div>
   <div class="actions">
     <%= form.submit %>
   </div>

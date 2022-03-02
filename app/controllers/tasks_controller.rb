@@ -33,7 +33,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to category_tasks_url(params[:category_id]), notice: "Task was successfully created." }
+        format.html { redirect_to category_tasks_url(@task.category_id), notice: "Task was successfully created." }
         # format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -47,10 +47,11 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update(task_params)
         @root ||= params[:root]
+
         if @root
           format.html { redirect_to due_today_url, notice: "Task was successfully updated." }
         else
-          format.html { redirect_to category_tasks_url(params[:category_id]), notice: "Task was successfully updated." }
+          format.html { redirect_to category_tasks_url(@task.category_id), notice: "Task was successfully updated." }
         # format.json { render :show, status: :ok, location: @task }
         end
       else
