@@ -11,7 +11,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.where(category_id:@category.id).order(:id)
+    @tasks = Task.where(category_id:@category.id).order("date, id")
   end
 
   # GET /tasks/1 or /tasks/1.json
