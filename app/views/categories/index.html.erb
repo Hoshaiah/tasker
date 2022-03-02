@@ -18,7 +18,9 @@
               <h2 class="text-inherit w-fit h-fit ml-1 mr-1 hover:text-gray-500"><%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure?' } %></h2>
             </div>
         </div>
-
+    <% end %>
+    <% if @categories.empty? %>
+      <h1 class="ml-10 mt-6 font-bold"> *No categories yet </h1>
     <% end %>
 </div>
 <br>

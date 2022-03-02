@@ -5,13 +5,13 @@ class TasksController < ApplicationController
   before_action :set_category, only: %i[ show edit new update create destroy index]
   # GET /tasks or /tasks.json
   def due_today
-    @tasks_today = current_user.tasks.where(date: Date.today.all_day).order(:title)
+    @tasks_today = current_user.tasks.where(date: Date.today.all_day).order(:id)
     @categories = current_user.categories
     # @tasks_today = current_user.tasks.where('date BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day)
   end
 
   def index
-    @tasks = Task.where category_id:@category.id
+    @tasks = Task.where(category_id:@category.id).order(:id)
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -29,8 +29,8 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
-    @task = @category.tasks.build(task_params)
-
+    @task = Task.create(task_params)
+    byebug
     respond_to do |format|
       if @task.save
         format.html { redirect_to category_tasks_url(@task.category_id), notice: "Task was successfully created." }

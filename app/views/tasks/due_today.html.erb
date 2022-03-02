@@ -9,10 +9,25 @@
     <div class="flex flex-col w-full h-full">
         <% @tasks_today.each do |task| %>
             <%= form_with url: category_task_path(task.category_id, task.id), method: 'put', class: 'flex mt-7 ml-10' do |f| %>
-                    <%= check_box("task", :completed, options = {checked: task.completed, onchange: "this.form.submit()", id: "task_#{task.id}", class:"border-4 #{task.category.color}"}) %>
-                    <label class="<%= task.completed? ? 'line-through' : '' %> text-md pl-4"><%= task.title %></label>
-                    <%= hidden_field_tag :root, true %>
+                <div class="w-full flex justify-between text-white hover:text-gray-400">
+                    <div class="flex justify-center items-center">
+                        <%= check_box("task", :completed, options = {checked: task.completed, onchange: "this.form.submit()", id: "task_#{task.id}", class:"border-4 #{task.category.color}"}) %>
+                        <label class="<%= task.completed? ? 'line-through' : '' %> text-black text-md pl-4"><%= task.title %></label>
+                        <%= hidden_field_tag :root, true %>
+                    </div>
+                    <div class="flex justify-center items-center mr-3 text-xs text-inherit">
+                        <%= link_to edit_category_task_path(task.category, task) do %>
+                            <h1 class="text-inherit"> Edit </h1>
+                        <% end %>
+                        <%= link_to  category_task_path(task.category, task), method: :delete, data: { confirm: 'Are you sure?' }, class: "m-2" do %>
+                            <h1 class="text-inherit"> Destroy </h1>
+                        <% end %>
+                    </div>
+                </div>
             <% end %>
+        <% end %>
+        <% if @tasks_today.empty? %>
+          <h1 class="ml-10 mt-6 font-bold"> *No tasks yet </h1>
         <% end %>
     </div>
 </div>

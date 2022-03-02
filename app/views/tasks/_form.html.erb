@@ -11,35 +11,26 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="font-bold mt-8 ml-12">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
 
-  <div class="field">
-    <%= form.label :notes %>
-    <%= form.text_area :notes %>
+  <div class="font-bold mt-8 ml-12">
+    <%= form.label :date , "Date due"%>
+    <%= form.date_select :date, selected:  @task.date ? @task.date.to_date : Date.today %>
   </div>
 
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date %>
-  </div>
-
-  <div class="field">
+  <div class="font-bold mt-8 ml-12">
     <%= form.label :completed %>
     <%= form.check_box :completed %>
   </div>
 
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.text_field :category_id%>
+  <div class="font-bold mt-8 ml-12">
+    <%= form.label :category_id, "Category" %>
+    <%= form.select :category_id, current_user.categories.pluck(:title,:id), selected: "#{@task.category ? @task.category.id : @category.id}" %>
   </div>
-
-  <div class="field">
-    <%= form.select :category_id, current_user.categories.pluck(:title,:id), selected: "#{@task.category ? @task.category.id : @current_user.categories.first.title}" %>
-  </div>
-  <div class="actions">
-    <%= form.submit %>
+  <div class="flex justify-center items-center text-white font-bold mt-4 ml-12 bg-blue-400 hover:bg-blue-200 hover:text-black p-4 rounded-md w-36 h-12 ">
+    <%= form.submit :class => 'font-bold' %>
   </div>
 <% end %>
