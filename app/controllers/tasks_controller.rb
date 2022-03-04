@@ -1,8 +1,7 @@
 class TasksController < ApplicationController
-  include ActionView::Helpers::UrlHelper
-  before_action :redirect_to_login
+  before_action :authenticate_user!
   before_action :set_task, only: %i[ show edit update destroy ]
-  before_action :set_category, only: %i[ show edit new update create destroy index]
+  before_action :set_category, only: %i[ show edit new create destroy index]
   # GET /tasks or /tasks.json
   def due_today
     @tasks_today = current_user.tasks.where(date: Date.today.all_day).order(:id)
@@ -11,7 +10,8 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.where(category_id:@category.id).order("date, id")
+    # @tasks = Task.where(category_id:@category.id).order("date, id")
+    @tasks = current_user.tasks.where(category_id:@category.id).order("date, id")
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -29,7 +29,7 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
-    @task = Task.create(task_params)
+    @task = Task.new(task_params)
     respond_to do |format|
       if @task.save
         format.html { redirect_to category_tasks_url(@task.category_id), notice: "Task was successfully created." }
@@ -73,11 +73,11 @@ class TasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = Task.find(params[:id])
+      @task = current_user.tasks.find(params[:id])
     end
 
     def set_category
-      @category = Category.find_by id:params[:category_id]
+      @category =current_user.categories.find(params[:category_id])
     end
 
     # Only allow a list of trusted parameters through.
@@ -85,9 +85,9 @@ class TasksController < ApplicationController
       params.require(:task).permit(:title, :notes, :date, :completed, :category_id)
     end
 
-    def redirect_to_login
-      if !current_user
-        redirect_to new_user_session_url
-      end
-    end
+    # def redirect_to_login
+    #   if !current_user
+    #     redirect_to new_user_session_url
+    #   end
+    # end
   end

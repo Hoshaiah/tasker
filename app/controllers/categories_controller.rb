@@ -1,10 +1,10 @@
 class CategoriesController < ApplicationController
-  before_action :redirect_to_login
+  before_action :authenticate_user!
   before_action :set_category, only: %i[ show edit update destroy ]
 
   # GET /categories or /categories.json
   def index
-    @categories = Category.where user_id:current_user.id
+    @categories = current_user.categories
   end
 
   # GET /categories/1 or /categories/1.json
@@ -13,7 +13,8 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
-    @category = Category.new
+    @category = Category.new()
+    # @category = current_user.categories.new
   end
 
   # GET /categories/1/edit
@@ -62,17 +63,17 @@ class CategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
-      @category = Category.find(params[:id])
+      @category =current_user.categories.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.require(:category).permit(:title, :notes, :date, :completed, :color)
+      params.require(:category).permit(:title, :notes, :date, :completed, :color).merge(user_id: current_user.id)
     end
 
-    def redirect_to_login
-      if !current_user
-        redirect_to new_user_session_url
-      end
-    end
+    # def redirect_to_login
+    #   if !current_user
+    #     redirect_to new_user_session_url
+    #   end
+    # end
 end
