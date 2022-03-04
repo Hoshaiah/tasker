@@ -30,7 +30,6 @@ class TasksController < ApplicationController
   # POST /tasks or /tasks.json
   def create
     @task = Task.create(task_params)
-    byebug
     respond_to do |format|
       if @task.save
         format.html { redirect_to category_tasks_url(@task.category_id), notice: "Task was successfully created." }
