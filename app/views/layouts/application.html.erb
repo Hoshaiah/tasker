@@ -14,13 +14,13 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <div class="w-full h-full">
+        <nav class="w-full h-16 bg-gray-900">
+        <div class="pt-3 pl-8">   
+          <%= link_to 'Tasker', due_today_path , :class => "text-blue-100 text-bolder text-4xl"%> 
+        </div>
+        </nav>
     <% if user_signed_in? %>
-      <div class="w-full h-full">
-          <nav class="w-full h-16 bg-gray-900">
-          <div class="pt-3 pl-8">   
-            <%= link_to 'Tasker', due_today_path , :class => "text-blue-100 text-bolder text-4xl"%> 
-          </div>
-          </nav>
 
           <div class="w-full h-full flex">
               <div id="burger-nav" class="w-96 h-full bg-white flex flex-col">
@@ -50,9 +50,6 @@
                         </div>
                       <% end %>
                   </div>
-                  <%#
-                  <div class="w-full h-10 flex p-8 pt-4 items-center">
-                      <%= link_to 'All Tasks', categories_path , :class => "text-md text-black hover:text-blue-500 hover:bg-transparent"%>
                   <div class="text-xs text-gray-500 w-full text-align pl-5 pt-5">
                     © Tasker by Hosh Domingo. <br> All Rights Reserved
                   </div>
@@ -64,11 +61,15 @@
                   </div>
               </div>
           </div>
-      </div>
     <% else %>
-      <%= link_to "Sign up", new_user_registration_path %> |
-      <%= link_to "Login", new_user_session_path %>
-      <%= yield %>
+      <%# link_to "Sign up", new_user_registration_path %>
+      <%# link_to "Login", new_user_session_path %>
+      <div class="w-full h-full flex justify-center items-center bg-gray-200">
+        <div class="rounded-lg w-5/12 h-2/3 p-16 min-w-fit bg-white justify-center"
+          <%= yield %>
+        </div>
+      </div>
     <% end %>
+    </div>
   </body>
 </html>

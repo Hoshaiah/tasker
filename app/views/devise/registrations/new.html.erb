@@ -1,15 +1,16 @@
-<h2>Sign up</h2>
+<></>
+<h1 class="font-bold text-xl mb-4 text-blue-500" >Sign up</h1>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, class: "font-bold" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password, class: "font-bold" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -17,13 +18,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, class: "font-bold" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="actions">
+  <div class="flex justify-center items-center text-white font-bold mt-8 bg-green-700 hover:bg-green-200 hover:text-black p-4 rounded-md w-36 h-12">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= link_to "Back", "/" , class: "flex justify-center items-center text-white font-bold mt-4 bg-red-700 hover:bg-blue-200 hover:text-black p-4 rounded-md w-36 h-6" %>
