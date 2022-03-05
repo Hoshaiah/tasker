@@ -1,15 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  notes: MyText
-  date: 2022-02-18
-  completed: false
-  user: one
+first_category:
+  title: can delete
+  color: black
+  user: hosh
 
-two:
-  title: MyString
-  notes: MyText
-  date: 2022-02-18
-  completed: false
-  user: two
+# second_category:
+#   title: MyString
+#   color: blue
+#   user: hosh

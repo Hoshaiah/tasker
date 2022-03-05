@@ -68,7 +68,7 @@ class CategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.require(:category).permit(:title, :notes, :date, :completed, :color).merge(user_id: current_user.id)
+      params.require(:category).permit(:title, :color).merge(user_id: current_user.id)
     end
 
     # def redirect_to_login

@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
+first_task:
+  title: can destroy
   notes: MyText
   date: 2022-02-18
   completed: false
-  category: one
+  category: first_category
 
 two:
   title: MyString

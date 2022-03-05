@@ -20,7 +20,8 @@
                         <%= link_to edit_category_task_path(task.category, task) do %>
                             <h1 class="text-inherit"> Edit </h1>
                         <% end %>
-                        <%= link_to  category_task_path(task.category, task), method: :delete, data: { confirm: 'Are you sure?' }, class: "m-2" do %>
+                        <%# link_to  category_task_path(task.category, task), method: :delete, data: { confirm: 'Are you sure?' }, class: "m-2" do %>
+                        <%= link_to  category_task_path(task.category, task), method: :delete, class: "m-2" do %>
                             <h1 class="text-inherit"> Destroy </h1>
                         <% end %>
                     </div>
