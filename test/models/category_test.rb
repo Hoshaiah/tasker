@@ -15,4 +15,10 @@ class CategoryTest < ActiveSupport::TestCase
     output = category.save
     assert_not output 
   end
+
+  test "should not save category without user" do
+    category = Category.new(title:"test", color: "blue")
+    output = category.save
+    assert_not output 
+  end
 end

@@ -2,7 +2,7 @@
 
 hosh:
   email: domingohoshaiah@gmail.com
-  encrypted_password: $2a$12$h6pimBbjMp7GEnHN4k1eXeP4DQ4tPd5K4ZiP4a4ZR8tC.ZKmMVR3W 
+  # encrypted_password: $2a$12$h6pimBbjMp7GEnHN4k1eXeP4DQ4tPd5K4ZiP4a4ZR8tC.ZKmMVR3W 
   
 # two:
 #   username: MyString
