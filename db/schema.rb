@@ -9,7 +9,7 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-
+# test
 ActiveRecord::Schema.define(version: 2022_03_05_002838) do
 
   # These are extensions that must be enabled in order to support this database
